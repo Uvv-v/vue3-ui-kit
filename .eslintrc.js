@@ -1,35 +1,32 @@
 module.exports = {
-  root: true,
+	env: {
+		"es2020": true,
+		"browser": true,
+		"node": true
+	},
 
-  env: {
-    node: true,
-  },
+	ignorePatterns: ["dist", "node_modules", "*d.ts"],
 
-  extends: [
-    'plugin:vue/essential',
-    '@vue/airbnb',
-  ],
+	parser: "vue-eslint-parser",
 
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
+	parserOptions: {
+		"parser": "@typescript-eslint/parser"
+	},
 
-  ignorePatterns: ['**/*.svg'],
+	extends: [
+		"eslint:recommended",
+		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"@vue/typescript/recommended"
+	],
 
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'max-len': ['error', { code: 120 }],
-    'no-underscore-dangle': 'off',
-    'no-plusplus': 'off',
-    'object-curly-newline': ['error', {
+    'vue/max-len': ['error', { code: 120 }],
+    'vue/object-curly-newline': ['error', {
       minProperties: Infinity,
       multiline: true,
       consistent: true,
     }],
     'linebreak-style': 'off',
-    'spaced-comment': ['error', 'always', {
-      markers: ['#region', '#endregion'],
-    }]
   },
 };
