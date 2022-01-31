@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { inputProps, inputEmits, inputSetup } from '../../_utils/input.util';
+import { defineComponent, SetupContext } from 'vue';
+import { inputProps, inputEmits, inputSetup, TInputProps } from '../../_utils/input.util';
 
 export default defineComponent({
   name: 'VInput',
@@ -21,7 +21,7 @@ export default defineComponent({
 
   setup(props, context) {
     return {
-      ...inputSetup(props, context),
+      ...inputSetup(props as TInputProps, context as SetupContext),
     };
   },
 });

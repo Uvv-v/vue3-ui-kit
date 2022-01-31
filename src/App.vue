@@ -11,7 +11,7 @@
 import { defineComponent, ref } from 'vue';
 
 import VInput from './components/input/VInput.vue';
-import VTable from "./components/table/VTable.vue";
+import VTable from './components/table/VTable.vue';
 
 export default defineComponent({
   name: 'App',

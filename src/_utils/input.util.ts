@@ -1,6 +1,6 @@
-import { SetupContext, ComponentPropsOptions, PropType,  } from 'vue';
+import { SetupContext, ComponentPropsOptions, PropType } from 'vue';
 
-type TInputProps = {
+export type TInputProps = {
   modelValue: string,
   length: number,
 };
