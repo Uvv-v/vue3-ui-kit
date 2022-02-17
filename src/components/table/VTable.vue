@@ -1,57 +1,47 @@
 <template>
-  <div>
-  </div>
+  <table>
+    <thead>
+      <TableHeader
+        :columns-tree="[1, 2, 3]"
+      />
+    </thead>
+
+    <tbody>
+      <TableRow
+        v-for="(row, rowI) in rows"
+        :key="rowI"
+        :row="row"
+      />
+    </tbody>
+  </table>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent, PropType } from 'vue';
+
+import TableRow from '@/components/table/components/TableRow.vue';
+import TableHeader from '@/components/table/components/TableHeader.vue';
+import { TColumnTreeDef, TRowDef } from '@/components/table/types';
 
 export default defineComponent({
   name: 'VTable',
 
   components: {
+    TableHeader,
+    TableRow,
   },
 
-  setup: function () {
-    const columnDefs = reactive([
-      { headerName: 'Make', field: 'make' },
-      {
-        headerName: 'Model',
-        field: 'model',
-        children: [
-          {
-            headerName: 'Submodule',
-            field: 'submodule',
-            children: [
-              { headerName: 'P1', field: 'p1' },
-              { headerName: 'P2', field: 'p2', editable: true },
-            ],
-          },
-          {
-            headerName: 'P',
-            field: 'p',
-            children: [
-              { headerName: 'P3', field: 'p3' },
-            ],
-          },
-        ],
-      },
-      { headerName: 'Price', field: 'price' },
-    ]);
+  props: {
+    columnTreeDef: { type: Object as PropType<TColumnTreeDef>, default: () => ({ children: [] }) },
+    rows: { type: Array as PropType<TRowDef[]>, default: () => [] },
+  },
 
-    const rowData = ref([
-      { make: 'Toyota', model: 'Celica', price: 35000, p2: '123' },
-      { make: 'Ford', model: 'Mondeo', price: 32000 },
-      { make: 'Porsche', model: 'Boxter', price: 72000 },
-    ]);
-
+  setup(props) {
     return {
-      columnDefs,
-      rowData,
     };
   },
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

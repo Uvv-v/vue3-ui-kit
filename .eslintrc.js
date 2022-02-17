@@ -31,5 +31,6 @@ module.exports = {
 		'semi': ['error', 'always'],
 		'quotes': ['error', 'single'],
     'linebreak-style': 'off',
+		'vue/html-indent': 'off',
   },
 };

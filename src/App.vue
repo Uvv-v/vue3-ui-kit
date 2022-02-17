@@ -1,29 +1,18 @@
 <template>
-  <div class="app">
-    <VInput v-model="value" />
-    <p>{{ value }}</p>
-
-    <VTable />
-  </div>
+  <div class="app"/>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-
-import VInput from './components/input/VInput.vue';
-import VTable from './components/table/VTable.vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'App',
 
   components: {
-    VInput,
-    VTable,
   },
 
   setup() {
     return {
-      value: ref('123'),
     };
   },
 });
@@ -40,5 +29,19 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  .icon {
+    transition: all 500ms;
+    transition-timing-function: ease-in-out;
+    fill: white;
+    stroke: gray;
+    color: gray;
+
+    &:hover {
+      fill: orange;
+      stroke: orange;
+      color: white;
+    }
+  }
 }
 </style>
