@@ -12,7 +12,8 @@
     "noUnusedLocals": true,
     "lib": ["esnext", "dom"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@tests/*": ["./tests/*"]
     }
   },
   "include": [
