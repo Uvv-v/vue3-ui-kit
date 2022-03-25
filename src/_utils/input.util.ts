@@ -1,19 +1,26 @@
-import { SetupContext, ComponentPropsOptions, PropType } from 'vue';
+import { ComponentPropsOptions, SetupContext } from 'vue';
+import { ObjectWith } from '@/_utils/types';
 
 export type TInputProps = {
   modelValue: string,
   length: number,
+
+  label: string,
 };
+
+export type TInputEmits = ('update:modelValue')[];
 
 export const inputProps: ComponentPropsOptions<TInputProps> = {
-  modelValue: { type: [String] as PropType<string> },
-  length: { type: Number as PropType<number> },
+  modelValue: { type: String },
+  length: { type: Number },
+
+  label: { type: String },
 };
 
-export const inputEmits = ['update:modelValue'];
+export const inputEmits: TInputEmits = ['update:modelValue'];
 
-export const inputSetup = (props: TInputProps, context: SetupContext) => {
-  const onInput = (ev: InputEvent): void => context.emit(
+export const inputSetup = (props: ObjectWith<TInputProps>, context: SetupContext<TInputEmits>) => {
+  const onInput = (ev: Event): void => context.emit(
     'update:modelValue',
     (ev?.target as HTMLInputElement).value,
   );

@@ -1,14 +1,18 @@
 <template>
-  <div class="app" />
+  <div class="app">
+    <ViewInputs />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ViewInputs from '@/examples/views/ViewInputs.vue';
 
 export default defineComponent({
   name: 'App',
 
   components: {
+    ViewInputs
   },
 
   setup() {
@@ -25,11 +29,6 @@ export default defineComponent({
   box-sizing: border-box;
 }
 .app {
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
   .icon {
     transition: all 500ms;
     transition-timing-function: ease-in-out;

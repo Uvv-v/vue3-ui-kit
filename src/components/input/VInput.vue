@@ -1,6 +1,9 @@
 <template>
-  <label class="input-wrap">
+  <label class="input">
+    <span class="input__label">{{ label }}</span>
+
     <input
+      class="input__field"
       type="text"
       :value="modelValue"
       @input="onInput"
@@ -9,33 +12,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext } from 'vue';
-import { inputProps, inputEmits, inputSetup, TInputProps } from '../../_utils/input.util';
+import { defineComponent } from 'vue';
+import { inputProps, inputEmits, inputSetup } from '@/_utils/input.util';
 
 export default defineComponent({
   name: 'VInput',
 
-  props: { ...inputProps },
+  props: inputProps,
 
-  emits: [...inputEmits],
+  emits: inputEmits,
 
   setup(props, context) {
     return {
-      ...inputSetup(props as TInputProps, context as SetupContext),
+      ...inputSetup(props, context),
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.input-wrap {
-  padding: 10px 10px;
+.input {
+  padding: 8px 10px;
   border: 1px solid black;
   border-radius: 2px;
 
-  input {
+  input.input__field {
     border: none;
     outline: none;
+    font-size: 18px;
+    width: 100%;
   }
 }
 </style>
