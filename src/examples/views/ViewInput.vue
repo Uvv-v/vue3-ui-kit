@@ -17,7 +17,7 @@ import VInput from '@/components/input/VInput.vue';
 import ValuePreviewer from '@/examples/ValuePreviewer.vue';
 
 export default defineComponent({
-  name: 'ViewInputs',
+  name: 'ViewInput',
 
   components: { ValuePreviewer, VInput },
 

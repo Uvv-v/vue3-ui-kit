@@ -3,7 +3,7 @@
     <th
       v-for="(hRow, hRowI) in columns"
       :key="hRowI"
-    ></th>
+    />
   </tr>
 </template>
 

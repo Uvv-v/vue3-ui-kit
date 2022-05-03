@@ -1,19 +1,14 @@
 <template>
   <div class="app">
-    <ViewInputs />
+    <RouterView />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ViewInputs from '@/examples/views/ViewInputs.vue';
 
 export default defineComponent({
   name: 'App',
-
-  components: {
-    ViewInputs
-  },
 
   setup() {
     return {
