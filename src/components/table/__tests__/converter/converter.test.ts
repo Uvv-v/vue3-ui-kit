@@ -1,6 +1,6 @@
-import { IMock } from '@tests/types';
+import { IMock } from '../../../../../tests/types';
 
-import { getColumnDefBranchesMock } from '@tests/table/converter/mocks/getColumnDefBranches.mock';
+import { getColumnDefBranchesMock } from './mocks/getColumnDefBranches.mock';
 import { getColumnDefDepthMock } from './mocks/getColumnDefDepth.mock';
 import { getGrownColumnDefMock } from './mocks/getGrownColumnDef.mock';
 import { convertColumnDefToArraysMock } from './mocks/convertColumnDefToArrays.mock';

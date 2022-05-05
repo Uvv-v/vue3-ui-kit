@@ -1,4 +1,4 @@
-import { TColumnDef } from '@/components/table/types';
+import { TColumnDef } from '../types';
 
 export const getColumnDefBranches = (columnDef: TColumnDef): TColumnDef[] => {
   const fn = (cDef: TColumnDef): TColumnDef[] => {

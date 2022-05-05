@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { TCLassOrStyleProp, TListItem } from '@/components/list/types';
+import { TListItem, TClassProp, TStyleProp } from './types';
 
 export default defineComponent({
   name: 'VListItem',
@@ -25,11 +25,11 @@ export default defineComponent({
     depth: { type: Number, required: true },
 
     itemClass: {
-      type: [String, Object, Function] as PropType<TCLassOrStyleProp>,
+      type: [String, Object, Function] as PropType<TClassProp>,
       default: '',
     },
     itemStyle: {
-      type: [String, Object, Function] as PropType<TCLassOrStyleProp>,
+      type: [String, Object, Function] as PropType<TStyleProp>,
       default: '',
     },
   },

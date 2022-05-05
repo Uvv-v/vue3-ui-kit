@@ -13,17 +13,17 @@ const routes: RouteRecordRaw[] = [
     path: '/example',
     name: 'Example',
     redirect: { name: 'ViewInputs' },
-    component: () => import('@/examples/Layout.vue'),
+    component: () => import('../examples/Layout.vue'),
     children: [
       {
         path: 'input',
         name: 'ViewInputs',
-        component: () => import('@/examples/views/ViewInput.vue'),
+        component: () => import('../examples/views/ViewInput.vue'),
       },
       {
         path: 'list',
         name: 'ViewLists',
-        component: () => import('@/examples/views/ViewList.vue'),
+        component: () => import('../examples/views/ViewList.vue'),
       },
     ],
   },

@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { inputProps, inputEmits, inputSetup } from '@/_utils/input.util';
+import { inputProps, inputEmits, inputSetup } from './utils/input.util';
 
 export default defineComponent({
   name: 'VInput',

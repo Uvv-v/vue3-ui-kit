@@ -25,9 +25,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import { TListItems } from '@/components/list/types';
+import { TListItems } from '../../components/list/types';
 
-import VList from '@/components/list/VList.vue';
+import VList from '../../components/list/VList.vue';
 
 export default defineComponent({
   name: 'ViewList',

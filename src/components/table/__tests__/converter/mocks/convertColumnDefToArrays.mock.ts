@@ -1,5 +1,5 @@
-import { IMock } from '@tests/types';
-import { convertColumnDefToArrays } from '@/components/table/utils/converter';
+import { IMock } from '../../../../../../tests/types';
+import { convertColumnDefToArrays } from '../../../utils/converter';
 
 export const convertColumnDefToArraysMock: IMock<typeof convertColumnDefToArrays> = {
   name: 'convertColumnDefToArrays',

@@ -13,8 +13,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import VInput from '@/components/input/VInput.vue';
-import ValuePreviewer from '@/examples/ValuePreviewer.vue';
+import VInput from '../../components/input/VInput.vue';
+import ValuePreviewer from '../ValuePreviewer.vue';
 
 export default defineComponent({
   name: 'ViewInput',

@@ -1,5 +1,5 @@
 import { ComponentPropsOptions, SetupContext } from 'vue';
-import { ObjectWith } from '@/_utils/types';
+import { ObjectWith } from '../../../_utils/types';
 
 export type TInputProps = {
   modelValue: string,

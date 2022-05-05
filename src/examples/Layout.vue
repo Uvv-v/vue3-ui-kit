@@ -18,9 +18,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { TListItems } from '@/components/list/types';
+import { TListItems } from '../components/list/types';
 
-import VList from '@/components/list/VList.vue';
+import VList from '../components/list/VList.vue';
 
 type TNavItem = {
   title: string,

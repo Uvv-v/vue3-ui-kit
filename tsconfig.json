@@ -10,11 +10,7 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
-    "lib": ["esnext", "dom"],
-    "paths": {
-      "@/*": ["./src/*"],
-      "@tests/*": ["./tests/*"]
-    }
+    "lib": ["esnext", "dom"]
   },
   "include": [
     "src/**/*.ts",

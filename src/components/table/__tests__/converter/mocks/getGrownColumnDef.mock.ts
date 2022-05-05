@@ -1,5 +1,5 @@
-import { IMock } from '@tests/types';
-import { getGrownColumnDef } from '@/components/table/utils/converter';
+import { IMock } from '../../../../../../tests/types';
+import { getGrownColumnDef } from '../../../utils/converter';
 
 export const getGrownColumnDefMock: IMock<typeof getGrownColumnDef> = {
   name: 'getGrownColumnDefBranches',

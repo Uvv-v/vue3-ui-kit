@@ -37,9 +37,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { TClassProp, TStyleProp,TListItems } from '@/components/list/types';
+import { TClassProp, TStyleProp,TListItems } from './types';
 
-import VListItem from '@/components/list/VListItem.vue';
+import VListItem from './VListItem.vue';
 
 export default defineComponent({
   name: 'VList',

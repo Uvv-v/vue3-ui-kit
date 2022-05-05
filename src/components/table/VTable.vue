@@ -21,7 +21,7 @@ import { defineComponent, PropType } from 'vue';
 
 // import TableRow from '@/components/table/components/TableRow.vue';
 // import TableHeader from '@/components/table/components/TableHeader.vue';
-import { TColumnDef, TRowDef } from '@/components/table/types';
+import { TColumnDef, TRowDef } from './types';
 
 export default defineComponent({
   name: 'VTable',

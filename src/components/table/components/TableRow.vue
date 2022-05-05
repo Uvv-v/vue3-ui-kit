@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { TRowDef } from '@/components/table/types';
+import { TRowDef } from '../types';
 
 export default defineComponent({
   name: 'TableRow',
