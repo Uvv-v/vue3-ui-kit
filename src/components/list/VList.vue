@@ -35,36 +35,23 @@
   </ul>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+import { defineProps, withDefaults } from 'vue';
 import { TClassProp, TStyleProp,TListItems } from './types';
 
 import VListItem from './VListItem.vue';
 
-export default defineComponent({
-  name: 'VList',
-
-  components: { VListItem },
-
-  props: {
-    items: { type: Array as PropType<TListItems>, required: true },
-    childrenKey: { type: String, default: 'children' },
-
-    depth: { type: Number, default: 0 },
-
-    itemClass: {
-      type: [String, Object, Function] as PropType<TClassProp>,
-      default: '',
-    },
-    itemStyle: {
-      type: [String, Object, Function] as PropType<TStyleProp>,
-      default: '',
-    },
-  },
-
-  setup() {
-    return {};
-  },
+withDefaults(defineProps<{
+  items: TListItems,
+  childrenKey?: string,
+  depth?: number,
+  itemClass?: TClassProp,
+  itemStyle?: TStyleProp,
+}>(), {
+  childrenKey: 'children',
+  depth: 0,
+  itemClass: '',
+  itemStyle: '',
 });
 </script>
 

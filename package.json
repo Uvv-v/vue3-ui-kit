@@ -15,9 +15,9 @@
       "require": "./dist/vue3-ui-kit.umd.js"
     }
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "scripts": {
-    "build": "vue-tsc --emitDeclarationOnly && vite build && mv dist/src dist/types",
+    "build": "vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types",
     "lint": "eslint --fix --ext .vue,.ts .",
     "test": "jest --config=jest.config.ts"
   },

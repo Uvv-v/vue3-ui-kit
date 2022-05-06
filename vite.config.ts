@@ -12,14 +12,24 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'vue3-ui-kit',
-      fileName: (format) => `vue3-ui-kit.${format}.js`
+      formats: ['es'],
+      fileName: (format) => `vue3-ui-kit.${format}.js`,
     },
     rollupOptions: {
       external: ['vue'],
       output: {
+        format: 'es',
+
+        chunkFileNames: (chunkInfo) => `${chunkInfo.name}.es.js`,
         globals: {
           vue: 'Vue',
         },
+      },
+      manualChunks(id) {
+        if (id.includes('node_modules')) return 'vendor';
+        if (id.includes('input')) return 'input';
+        if (id.includes('list')) return 'list';
+        if (id.includes('table')) return 'table';
       },
     },
   },
