@@ -11,7 +11,7 @@
         <slot
           name="item"
           v-bind="propItem"
-          :number="`${itemI + 1}`"
+          :number="`${Number(itemI) + 1}`"
         >
           {{ item }}
         </slot>
@@ -35,7 +35,7 @@
   </ul>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts" name="VList">
 import { defineProps, withDefaults } from 'vue';
 import { TClassProp, TStyleProp,TListItems } from './types';
 
