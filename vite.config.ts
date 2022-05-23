@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import eslint from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
+import dtsPlugin from 'vite-plugin-dts';
 
 export default defineConfig({
   plugins: [
@@ -11,8 +12,14 @@ export default defineConfig({
     vueSetupExtend(),
     eslint(),
     svgLoader(),
+    dtsPlugin({
+      outputDir: 'lib/types',
+    }),
   ],
   build: {
+    sourcemap: true,
+    outDir: 'lib',
+
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'vue3-ui-kit',
