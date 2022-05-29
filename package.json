@@ -10,16 +10,13 @@
   "module": "./lib/vue3-ui-kit.es.js",
   "exports": {
     ".": {
-      "import": "./lib/vue3-ui-kit.es.js",
-      "require": "./lib/vue3-ui-kit.umd.js"
+      "import": "./lib/vue3-ui-kit.es.js"
     },
     "./style": {
-      "import": "./lib/style.css",
-      "require": "./lib/style.css"
+      "import": "./lib/style.css"
     },
     "./src": {
-      "import": "./lib/src/index.ts",
-      "require": "./lib/src/index.ts"
+      "import": "./lib/src/index.ts"
     }
   },
   "types": "./lib/types/index.d.ts",

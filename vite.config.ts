@@ -14,10 +14,15 @@ export default defineConfig({
     svgLoader(),
     dtsPlugin({
       outputDir: 'lib/types',
+      compilerOptions: {
+        sourceMap: true,
+        esModuleInterop: true,
+      },
+      insertTypesEntry: true,
+      staticImport: true,
     }),
   ],
   build: {
-    sourcemap: true,
     outDir: 'lib',
 
     lib: {
