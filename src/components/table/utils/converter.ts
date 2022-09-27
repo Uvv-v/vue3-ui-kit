@@ -1,4 +1,4 @@
-import { TColumnDef } from '../types';
+import { TColumnDef, TResultColumn } from '../types';
 
 export const getColumnDefBranches = (columnDef: TColumnDef): TColumnDef[] => {
   const fn = (cDef: TColumnDef): TColumnDef[] => {
@@ -41,7 +41,7 @@ export const getGrownColumnDef = (columnDef: TColumnDef): TColumnDef => {
   return fn(columnDef, 0);
 };
 
-export const convertColumnDefToArrays = (columnDef: TColumnDef): (Omit<TColumnDef, 'children'>)[][] => {
+export const convertColumnDefToArrays = (columnDef: TColumnDef): TResultColumn[][] => {
   const columnsDefBranches = getColumnDefBranches(getGrownColumnDef(columnDef));
   const result: ReturnType<typeof convertColumnDefToArrays> = [];
 
@@ -54,6 +54,19 @@ export const convertColumnDefToArrays = (columnDef: TColumnDef): (Omit<TColumnDe
   };
 
   columnsDefBranches.forEach((el) => fn(el));
+
+  for (let rowI = 0; rowI < result.length - 1; rowI++) {
+    let prevLabel = result[rowI][0].label;
+    for (let columnI = 1; columnI < result[rowI].length; columnI++) {
+      if (prevLabel === result[rowI][columnI].label) {
+        result[rowI].splice(columnI, 1);
+        columnI--;
+        result[rowI][columnI].colspan = Number(result[rowI][columnI].colspan || 1) + 1;
+      } else {
+        prevLabel = result[rowI][columnI].label;
+      }
+    }
+  }
 
   return result;
 };

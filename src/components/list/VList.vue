@@ -11,7 +11,7 @@
         <slot
           name="item"
           v-bind="propItem"
-          :number="`${Number(itemI) + 1}`"
+          :number="`${itemI + 1}`"
         >
           {{ item }}
         </slot>

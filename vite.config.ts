@@ -14,12 +14,9 @@ export default defineConfig({
     svgLoader(),
     dtsPlugin({
       outputDir: 'lib/types',
-      compilerOptions: {
-        sourceMap: true,
-        esModuleInterop: true,
-      },
+      entryRoot: 'src',
       insertTypesEntry: true,
-      staticImport: true,
+      noEmitOnError: true,
     }),
   ],
   build: {
@@ -43,6 +40,7 @@ export default defineConfig({
       manualChunks(id) {
         if (id.includes('node_modules')) return 'vendor';
         if (id.includes('input')) return 'input';
+        if (id.includes('checkbox')) return 'checkbox';
         if (id.includes('list')) return 'list';
         if (id.includes('table')) return 'table';
       },
