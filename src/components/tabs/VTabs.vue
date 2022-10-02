@@ -3,7 +3,7 @@
     <div class="tabs__buttons">
       <button
         v-for="(tab, tabI) in tabs"
-        :key="tabI"
+        :key="keySetter(tabI)"
         :ref="(el) => currentTabRefSetter(tab, el)"
         class="tabs__button"
         @click="onTabClick(tab)"
@@ -14,7 +14,10 @@
 
     <div
       class="tabs__underline"
-     :style="{ left: `${underline.left}px`, width: `${underline.width}px` }"
+      :style="{
+        left: `${underline.left}px`,
+        width: `${underline.width}px`,
+      }"
     />
 
     <div v-if="slots.content" class="tabs__content">
@@ -24,7 +27,8 @@
 </template>
 
 <script setup lang="ts" name="VTabs">
-import { defineProps, defineEmits, useSlots, ref, onMounted, Ref, onUnmounted } from 'vue';
+import { withDefaults, defineProps, defineEmits, useSlots, ref, onMounted, onUnmounted, Ref} from 'vue';
+import { defaultKeySetter, TKeySetter } from '../../_utils/uKeySetter';
 
 type TTab = Record<string, unknown>;
 type TTabs = TTab[];
@@ -32,10 +36,13 @@ type TUnderline = { left: number, width: number };
 
 const slots = useSlots();
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   currentTab: TTab,
   tabs: TTabs,
-}>();
+  keySetter?: TKeySetter,
+}>(), {
+  keySetter: (() => defaultKeySetter) as unknown as TKeySetter,
+});
 
 const emit = defineEmits<{
   (event: 'update:currentTab', tab: Record<string, unknown>): void,

@@ -42,6 +42,7 @@ export default defineConfig({
         if (id.includes('input')) return 'input';
         if (id.includes('checkbox')) return 'checkbox';
         if (id.includes('list')) return 'list';
+        if (id.includes('tabs')) return 'tabs';
         if (id.includes('table')) return 'table';
       },
     },
