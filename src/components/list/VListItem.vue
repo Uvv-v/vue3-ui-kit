@@ -12,7 +12,7 @@
   </li>
 </template>
 
-<script setup lang="ts" name="VListItem">
+<script setup lang="ts">
 import { defineProps, withDefaults } from 'vue';
 import { TListItem, TClassProp, TStyleProp } from './types';
 

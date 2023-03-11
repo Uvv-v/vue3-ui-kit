@@ -21,7 +21,7 @@
   </label>
 </template>
 
-<script setup lang="ts" name="VCheckBox">
+<script setup lang="ts">
 import { defineProps, withDefaults, defineEmits } from 'vue';
 import { TCheckBoxType } from './types';
 

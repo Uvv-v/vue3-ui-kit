@@ -35,7 +35,7 @@
   </ul>
 </template>
 
-<script setup lang="ts" name="VList">
+<script setup lang="ts">
 import { defineProps, withDefaults } from 'vue';
 import { TClassProp, TStyleProp,TListItems } from './types';
 

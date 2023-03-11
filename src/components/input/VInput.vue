@@ -23,7 +23,7 @@
   </label>
 </template>
 
-<script setup lang="ts" name="VInput">
+<script setup lang="ts">
 import { withDefaults, defineProps, defineEmits, ref } from 'vue';
 
 withDefaults(defineProps<{

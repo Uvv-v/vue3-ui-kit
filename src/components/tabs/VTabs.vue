@@ -26,9 +26,9 @@
   </div>
 </template>
 
-<script setup lang="ts" name="VTabs">
-import { withDefaults, defineProps, defineEmits, useSlots, ref, onMounted, onUnmounted, Ref} from 'vue';
-import { defaultKeySetter, TKeySetter } from '../../_utils/uKeySetter';
+<script setup lang="ts">
+import { withDefaults, defineProps, defineEmits, useSlots, ref, onMounted, onUnmounted, Ref } from 'vue';
+import { defaultKeySetter, TKeySetter } from '../../_utils';
 
 type TTab = Record<string, unknown>;
 type TTabs = TTab[];
