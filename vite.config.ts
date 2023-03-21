@@ -1,7 +1,6 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import eslint from 'vite-plugin-eslint';
 import svgLoader from 'vite-svg-loader';
 import dtsPlugin from 'vite-plugin-dts';
@@ -9,7 +8,6 @@ import dtsPlugin from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [
     vue(),
-    vueSetupExtend(),
     eslint(),
     svgLoader(),
     dtsPlugin({

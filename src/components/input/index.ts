@@ -1,1 +1,3 @@
-export { default as VInput } from './VInput.vue';
+import './index.scss';
+
+export { default as UiInput } from './UiInput.vue';

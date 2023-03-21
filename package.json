@@ -6,8 +6,8 @@
     "lib",
     "src"
   ],
-  "main": "./lib/vue3-ui-kit.umd.js",
-  "module": "./lib/vue3-ui-kit.es.js",
+  "main": "./lib/vue3-ui-kit.es.js",
+  "module": "./lib/vue3-ui-kit.umd.js",
   "exports": {
     ".": {
       "import": "./lib/vue3-ui-kit.es.js"

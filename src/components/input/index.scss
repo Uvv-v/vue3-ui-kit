@@ -1,0 +1,40 @@
+.ui-input.input {
+  font-family: var(--ui-font-family);
+
+  & > span.input__label {
+    display: block;
+    font-size: 12px;
+  }
+  & > input.input__field {
+    margin-top: 2px;
+    padding: 8px 12px;
+    width: 100%;
+    display: block;
+
+    border: 1px solid gray;
+    border-radius: 6px;
+
+    font-family: var(--ui-font-family);
+
+    box-shadow: 0 1px 3px #0002;
+
+    &:focus, &:active {
+      border-color: var(--ui-color-outline);
+      outline: 1px solid var(--ui-color-outline);
+    }
+  }
+
+  &.input_invalid {
+    & > span.input__label {
+      color: red;
+    }
+
+    & > input.input__field {
+      border-color: red;
+
+      &:focus, &:active {
+        outline: 1px solid red;
+      }
+    }
+  }
+}
