@@ -9,22 +9,13 @@
   </tr>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { TRowDef } from '../types';
+<script setup lang="ts">
+import { TColumnDef, TRowDef } from '../types';
 
-export default defineComponent({
-  name: 'TableRow',
-
-  props: {
-    columnDefs: { type: Array as PropType<string[]>, required: true },
-    row: { type: Object as PropType<TRowDef>, required: true },
-  },
-
-  setup() {
-    return {};
-  },
-});
+defineProps<{
+  columnsDef?: TColumnDef,
+  row: TRowDef[number],
+}>();
 </script>
 
 <style lang="scss" scoped>

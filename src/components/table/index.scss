@@ -1,0 +1,31 @@
+.ui-table {
+  font-family: var(--ui-font-family);
+
+  border-radius: 6px;
+  border-collapse: collapse;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px gray, 0 1px 3px #0002;
+
+  tr {
+    th {
+      border: 1px solid gray;
+      font-weight: 500;
+      padding: 6px 12px;
+    }
+    td {
+      border: 1px solid gray;
+      padding: 6px 12px;
+    }
+  }
+  thead {
+    background: #0001;
+  }
+  tbody {
+    tr {
+      &:hover {
+        //box-shadow: 0 1px 3px #0004;
+        //background: #0001;
+      }
+    }
+  }
+}

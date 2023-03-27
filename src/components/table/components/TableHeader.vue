@@ -3,7 +3,10 @@
     <th
       v-for="(hRow, hRowI) in columns"
       :key="hRowI"
-    />
+      :colspan="hRow.colspan"
+    >
+      {{ hRow.label }}
+    </th>
   </tr>
 </template>
 
