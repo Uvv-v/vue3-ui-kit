@@ -1,72 +1,99 @@
-import { TColumnDef, TResultColumn } from '../types';
+import { IColumn, IColumnNode, TDefaultRow } from '../types';
 
-export const getColumnDefBranches = (columnDef: TColumnDef): TColumnDef[] => {
-  const fn = (cDef: TColumnDef): TColumnDef[] => {
-    if (!cDef.children) return [cDef];
-    return cDef.children
-      .reduce(
-        (acc, el) => [
-          ...acc,
-          ...fn(el).map((e) => ({ ...cDef, children: [e] })),
-        ],
-        [] as TColumnDef[],
-      );
-  };
-  return fn(columnDef);
+const getDepth = <T extends TDefaultRow>(node: IColumnNode<T>, depth = 1): number => {
+  if (node.children?.length) return node.children.reduce(
+    (acc, el) => {
+      const a = getDepth(el, depth + 1);
+      if (acc < a) acc = a;
+      return acc;
+    },
+    depth,
+  );
+  return depth;
 };
 
-export const getColumnDefDepth = (columnDef: TColumnDef, initialDepth = 0): number => {
-  if (columnDef.children) return columnDef.children
-    .reduce((acc, el) => {
-      const d = getColumnDefDepth(el, initialDepth + 1);
-      return d > acc ? d : acc;
-    }, initialDepth);
-  return initialDepth;
+const collectColspan = <T extends TDefaultRow>(
+  node: IColumnNode<T>,
+  collection: Record<keyof T, number> = {} as Record<keyof T, number>,
+  affectedNodeKeys: (keyof T)[] = [],
+): Record<keyof T, number> => {
+  if (node.children?.length) {
+    collection[node.key] = 0;
+    const nextAffectedNodeKeys = [...affectedNodeKeys, node.key];
+    node.children.forEach((childNode) => {
+      collectColspan(childNode, collection, nextAffectedNodeKeys);
+    });
+  } else {
+    collection[node.key] = 1;
+    affectedNodeKeys.forEach((key) => {
+      collection[key] += 1;
+    });
+  }
+  return collection;
 };
 
-export const getGrownColumnDef = (columnDef: TColumnDef): TColumnDef => {
-  const columnDefDepth = getColumnDefDepth(columnDef);
+const collectRowspan = <T extends TDefaultRow>(
+  node: IColumnNode<T>,
+  maxDepth: number,
+  collection: Record<keyof T, number> = {} as Record<keyof T, number>,
+  depth = 0,
+): Record<keyof T, number> => {
 
-  const fn = (cDef: TColumnDef, depth: number): TColumnDef => {
-    if (!cDef.children) {
-      if (columnDefDepth === depth) return cDef;
-      return { children: [fn(cDef, depth + 1)] };
-    }
-    return {
-      ...cDef,
-      children: cDef.children.map((el) => fn(el, depth + 1)),
-    };
-  };
-
-  return fn(columnDef, 0);
-};
-
-export const convertColumnDefToArrays = (columnDef: TColumnDef): TResultColumn[][] => {
-  const columnsDefBranches = getColumnDefBranches(getGrownColumnDef(columnDef));
-  const result: ReturnType<typeof convertColumnDefToArrays> = [];
-
-  const fn = (cDef: TColumnDef, depth = 0): void => {
-    const { children, ...column } = cDef;
-    if (!result[depth]) result[depth] = [];
-    result[depth].push(column);
-
-    children?.forEach((el) => fn(el, depth + 1));
-  };
-
-  columnsDefBranches.forEach((el) => fn(el));
-
-  for (let rowI = 0; rowI < result.length - 1; rowI++) {
-    let prevLabel = result[rowI][0].label;
-    for (let columnI = 1; columnI < result[rowI].length; columnI++) {
-      if (prevLabel === result[rowI][columnI].label) {
-        result[rowI].splice(columnI, 1);
-        columnI--;
-        result[rowI][columnI].colspan = Number(result[rowI][columnI].colspan || 1) + 1;
-      } else {
-        prevLabel = result[rowI][columnI].label;
-      }
-    }
+  if (node.children?.length) {
+    collection[node.key] = 1;
+    node.children.forEach((childNode) => {
+      collectRowspan(childNode, maxDepth, collection, depth + 1);
+    });
+  } else {
+    collection[node.key] = maxDepth - depth;
   }
 
-  return result;
+  return collection;
+};
+
+const collectRows = <T extends TDefaultRow>(
+  node: IColumnNode<T>,
+  colspanCollection: Record<keyof T, number>,
+  rowspanCollection: Record<keyof T, number>,
+  collection: IColumn<T>[][] = [],
+  depth = 0,
+): IColumn<T>[][] => {
+  const column: IColumn<T> = {
+    label: node.label,
+    key: node.key,
+    colspan: colspanCollection[node.key],
+    rowspan: rowspanCollection[node.key],
+  };
+
+  if (collection.length <= depth) {
+    collection.push([column]);
+  } else {
+    collection[depth].push(column);
+  }
+
+  if (node.children?.length) {
+    node.children.forEach((childNode) => {
+      collectRows(childNode,colspanCollection, rowspanCollection, collection, depth + 1);
+    });
+  }
+  return collection;
+};
+
+export const convertColumnTreeToArrays = <T extends TDefaultRow>(
+  columns: IColumnNode<T> | IColumnNode<T>[],
+): IColumn<T>[][] => {
+  let node: IColumnNode<T>;
+  if (columns instanceof Array) {
+    const rootKey = Symbol('root');
+    node = { key: rootKey, children: columns };
+  } else {
+    node = columns;
+  }
+
+  const depth = getDepth<T>(node);
+  const colspan = collectColspan<T>(node);
+  const rowspan = collectRowspan<T>(node, depth);
+  const rows = collectRows<T>(node, colspan, rowspan);
+
+  return (columns instanceof Array) ? rows.splice(1) : rows;
 };

@@ -1,15 +1,9 @@
 import { IMock } from '../../../../../tests/types';
 
-import { getColumnDefBranchesMock } from './mocks/getColumnDefBranches.mock';
-import { getColumnDefDepthMock } from './mocks/getColumnDefDepth.mock';
-import { getGrownColumnDefMock } from './mocks/getGrownColumnDef.mock';
-import { convertColumnDefToArraysMock } from './mocks/convertColumnDefToArrays.mock';
+import { convertColumnTreeToArraysMock } from './mocks/convertColumnTreeToArrays.mock';
 
 const mocks: IMock[] = [
-  getColumnDefBranchesMock,
-  getColumnDefDepthMock,
-  getGrownColumnDefMock,
-  convertColumnDefToArraysMock,
+  convertColumnTreeToArraysMock,
 ];
 
 mocks.forEach((mock) => {

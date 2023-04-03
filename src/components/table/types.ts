@@ -1,24 +1,22 @@
-export type TColumnOptions = {
-  width?: number,
-  className?: string,
+export type RecursiveKeyOf<TObj extends object> = {
+  [TKey in keyof TObj & (string | number)]:
+  TObj[TKey] extends any[] ? `${TKey}` :
+    TObj[TKey] extends object
+      ? `${TKey}` | `${RecursiveKeyOf<TObj[TKey]>}`
+      : `${TKey}`;
+}[keyof TObj & (string | number)];
+
+export type TDefaultRow = Record<string | symbol, unknown>;
+
+export interface IColumnNode<T extends TDefaultRow = TDefaultRow> {
+  key: RecursiveKeyOf<T> | string | symbol,
+  label?: string,
+  children?: IColumnNode<T>[],
 }
 
-export type TColumn<K extends string = string> = {
-  label: string,
-  key: K,
-  options?: TColumnOptions,
-  children?: never,
-};
-
-export type TGroupColumn<K extends string = string> = {
+export interface IColumn<T extends TDefaultRow = TDefaultRow> {
+  key: RecursiveKeyOf<T> | string | symbol,
   label?: string,
-  key?: never,
-  options?: TColumnOptions,
-  children: TColumnDef<K>[],
-};
-
-export type TColumnDef<K extends string = string> = TColumn<K> | TGroupColumn<K>;
-
-export type TRowDef<K extends string = string> = Record<K, unknown>[];
-
-export type TResultColumn<K extends string = string> = Omit<TColumnDef, 'children'> & { colspan?: number };
+  colspan: number,
+  rowspan: number,
+}
