@@ -1,6 +1,7 @@
+import './index.scss';
 import { computed, Ref } from 'vue';
 
-export { default as VCheckBox } from './VCheckBox.vue';
+export { default as UiCheckBox } from './UiCheckBox.vue';
 
 export const getCheckBoxGroupComputed = (checks: Ref<boolean>[]) => {
   return computed({

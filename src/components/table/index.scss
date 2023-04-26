@@ -7,19 +7,25 @@
   box-shadow: 0 0 0 1px gray, 0 1px 3px #0002;
 
   tr {
+    text-align: left;
+    vertical-align: bottom;
+
     th {
+      padding: 8px 12px;
       border: 1px solid gray;
       font-weight: 500;
-      padding: 6px 12px;
     }
+
     td {
+      padding: 8px 12px;
       border: 1px solid gray;
-      padding: 6px 12px;
     }
   }
+
   thead {
     background: #0001;
   }
+
   tbody {
     tr {
       &:hover {

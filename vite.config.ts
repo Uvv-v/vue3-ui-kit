@@ -24,7 +24,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'vue3-ui-kit',
       formats: ['es'],
-      fileName: (format) => `vue3-ui-kit.${format}.js`,
+      fileName: () => 'index.js',
     },
     rollupOptions: {
       external: ['vue'],

@@ -6,11 +6,10 @@
     "lib",
     "src"
   ],
-  "main": "./lib/vue3-ui-kit.es.js",
-  "module": "./lib/vue3-ui-kit.umd.js",
+  "main": "./lib/",
   "exports": {
     ".": {
-      "import": "./lib/vue3-ui-kit.es.js"
+      "import": "./lib/"
     },
     "./style": {
       "import": "./lib/style.css"
