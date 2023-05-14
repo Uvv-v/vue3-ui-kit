@@ -3,6 +3,7 @@
     :class="[
       'ui-input input',
       { 'input_invalid': !isValid },
+      { 'input_disabled': disabled },
     ]"
   >
     <span v-if="label" class="input__label">{{ label }}</span>
@@ -10,6 +11,7 @@
     <input
       v-bind="$attrs"
       :value="modelValue"
+      :disabled="disabled"
       class="input__field"
       @input="onInput"
     >
@@ -25,10 +27,18 @@ export interface IInputProps {
   modelValue: string,
   label?: string,
   validator?: TValidator,
+  disabled?: boolean,
 }
 /*#endregion Types*/
 
-const props = defineProps<IInputProps>();
+const props = withDefaults(
+  defineProps<IInputProps>(),
+  {
+    label: undefined,
+    validator: undefined,
+    disabled: false
+  },
+);
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void,

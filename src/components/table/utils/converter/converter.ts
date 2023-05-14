@@ -1,4 +1,4 @@
-import { IColumn, IColumnNode, TDefaultRow } from '../types';
+import { IColumn, IColumnNode, TDefaultRow } from '../../types';
 
 const getDepth = <T extends TDefaultRow>(node: IColumnNode<T>, depth = 1): number => {
   if (node.children?.length) return node.children.reduce(

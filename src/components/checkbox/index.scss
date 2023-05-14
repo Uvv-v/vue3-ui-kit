@@ -1,6 +1,9 @@
 label.checkbox {
   display: flex;
   gap: 10px;
+
+  font-family: var(--ui-font-family);
+
   user-select: none;
 
   span.checkbox__box {
@@ -16,10 +19,11 @@ label.checkbox {
   }
 
   input[type='checkbox'] {
-    display: none;
+    position: absolute;
+    opacity: 0;
 
     &:checked ~ span.checkbox__box {
-      color: var(--primary);
+      color: var(--ui-color-primary);;
     }
 
     &:not(:checked) ~ span.checkbox__box {
@@ -27,6 +31,15 @@ label.checkbox {
         width: 0;
         height: 0;
         opacity: 0;
+      }
+    }
+
+    &:not(:disabled) {
+      &:focus, &:active {
+        & ~ .checkbox__box {
+          border-color: var(--ui-color-outline);
+          outline: 1px solid var(--ui-color-outline);
+        }
       }
     }
   }
@@ -44,11 +57,13 @@ label.checkbox[data-type='regular'] span.checkbox__box {
   }
 
   &::before {
-    transform: rotate(45deg);
+    width: 6px;
+    transform: translateX(-3.5px) translateY(2px) rotate(45deg);
   }
 
   &::after {
-    transform: rotate(-45deg);
+    width: 12px;
+    transform: translateX(2px) translateY(0px) rotate(-45deg);
   }
 }
 
@@ -64,10 +79,11 @@ label.checkbox[data-type='group'] span.checkbox__box {
   }
 }
 
-.checkbox.checkbox_disabled {
-  color: var(--gray);
+label.checkbox.checkbox_disabled {
+  color: gray !important;
 
-  .checkbox__box {
-    color: var(--gray) !important;
+  span.checkbox__box {
+    color: gray !important;
+    border-style: dashed;
   }
 }

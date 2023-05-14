@@ -10,26 +10,39 @@
     padding: 8px 12px;
     width: 100%;
     display: block;
+    outline: none;
 
-    border: 1px solid gray;
+    border: 1.5px solid gray;
     border-radius: 6px;
 
     font-family: var(--ui-font-family);
 
     box-shadow: 0 1px 3px #0002;
 
-    &:focus, &:active {
-      border-color: var(--ui-color-outline);
-      outline: 1px solid var(--ui-color-outline);
+    &:not(:disabled) {
+      &:focus, &:active {
+        border-color: var(--ui-color-outline);
+        outline: 1px solid var(--ui-color-outline);
+      }
     }
   }
+}
 
-  &.input_invalid {
-    & > span.input__label {
-      color: red;
-    }
+.ui-input.input.input_disabled {
+  & > input.input__field {
+    border-style: dashed;
+  }
+}
 
-    & > input.input__field {
+.ui-input.input.input_invalid {
+  & > span.input__label {
+    color: red;
+  }
+
+  & > input.input__field {
+    border-color: red;
+
+    &:not(:disabled) {
       border-color: red;
 
       &:focus, &:active {

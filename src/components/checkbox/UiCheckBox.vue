@@ -27,8 +27,8 @@ import { TCheckBoxType } from './types';
 
 withDefaults(defineProps<{
   modelValue: boolean,
-  type: TCheckBoxType,
-  disabled: boolean,
+  type?: TCheckBoxType,
+  disabled?: boolean,
 }>(), {
   type: 'regular',
   disabled: false,

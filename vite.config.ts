@@ -21,10 +21,10 @@ export default defineConfig({
     outDir: 'lib',
 
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, 'src/index.ts.ts'),
       name: 'vue3-ui-kit',
       formats: ['es'],
-      fileName: () => 'index.js',
+      fileName: () => 'index.ts.js',
     },
     rollupOptions: {
       external: ['vue'],
