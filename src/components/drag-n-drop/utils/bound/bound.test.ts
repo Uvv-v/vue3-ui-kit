@@ -123,4 +123,11 @@ describe('getASupersetBRatio', () => {
       { x: 20, y: 0, w: 10, h: 10 },
     )).toEqual(0);
   });
+
+  it('Zero bound', () => {
+    expect(getASupersetBRatio(
+      { x: 0, y: 0, w: 0, h: 0 },
+      { x: 0, y: 0, w: 10, h: 10 },
+    )).toEqual(0);
+  });
 });
