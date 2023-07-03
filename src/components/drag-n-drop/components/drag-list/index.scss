@@ -1,0 +1,16 @@
+.ui-drag-list {
+  padding: 8px 8px;
+  border: 1px solid red;
+  border-radius: 8px;
+
+  display: flex;
+  gap: 8px;
+
+  &.ui-drag-list__horizontal {
+    flex-direction: row;
+  }
+
+  &.ui-drag-list__vertical {
+    flex-direction: column;
+  }
+}

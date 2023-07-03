@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { convertColumnTreeToArrays } from './utils/converter';
+import { convertColumnTreeToArrays } from './utils/converter/converter';
 import { IColumnNode, TDefaultRow } from './types';
 
 import TableHeaderRow from './components/TableHeaderRow.vue';
