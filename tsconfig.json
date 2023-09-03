@@ -13,7 +13,8 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "skipLibCheck": true,
     "outDir": "lib",
-    "declaration": true
+    "declaration": true,
+    "noImplicitAny": false
   },
   "include": ["vite.config.*", "src/**/*", "src/**/*.vue"]
 }

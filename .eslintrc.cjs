@@ -21,6 +21,7 @@ module.exports = {
   ],
 
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'vue/max-len': ['error', { code: 120 }],
     'vue/max-attributes-per-line': 'off',

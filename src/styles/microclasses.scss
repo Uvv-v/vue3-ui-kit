@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@for $i from 1 through 20 {
+  .gap-#{$i} { gap: #{$i}px; }
+}

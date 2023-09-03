@@ -17,14 +17,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from 'vue';
+// import { defineEmits } from 'vue';
 import { IColumn } from '../types';
 
 defineProps<{
   columns: IColumn[]
 }>();
 
-const emits = defineEmits<{
-  (event: 'test', value: string): void,
-}>();
+// const emits = defineEmits<{
+//   (event: 'test', value: string): void,
+// }>();
 </script>

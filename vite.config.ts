@@ -11,20 +11,18 @@ export default defineConfig({
     eslint(),
     svgLoader(),
     dtsPlugin({
-      outputDir: 'lib/types',
+      outDir: 'lib/types',
       entryRoot: 'src',
       insertTypesEntry: true,
-      noEmitOnError: true,
     }),
   ],
   build: {
     outDir: 'lib',
-
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts.ts'),
+      entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'vue3-ui-kit',
       formats: ['es'],
-      fileName: () => 'index.ts.js',
+      fileName: () => 'index.js',
     },
     rollupOptions: {
       external: ['vue'],
@@ -33,15 +31,15 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
-        chunkFileNames: (chunkInfo) => `${chunkInfo.name}.es.js`,
-      },
-      manualChunks(id) {
-        if (id.includes('node_modules')) return 'vendor';
-        if (id.includes('input')) return 'input';
-        if (id.includes('checkbox')) return 'checkbox';
-        if (id.includes('list')) return 'list';
-        if (id.includes('tabs')) return 'tabs';
-        if (id.includes('table')) return 'table';
+        manualChunks(id) {
+          if (id.includes('node_modules')) return 'vendor';
+          if (id.includes('input')) return 'input';
+          if (id.includes('checkbox')) return 'checkbox';
+          if (id.includes('list')) return 'list';
+          if (id.includes('tabs')) return 'tabs';
+          if (id.includes('table')) return 'table';
+        },
+        chunkFileNames: (chunkInfo) => `${chunkInfo.name}.esm.js`,
       },
     },
   },

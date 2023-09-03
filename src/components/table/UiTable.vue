@@ -29,7 +29,7 @@
           #[`row-${column.key}`]
         >
           <slot
-            v-bind="{ column }"
+            v-bind="{ column, row }"
             :name="`row-${column.key}`"
           />
         </template>

@@ -9,13 +9,13 @@ export type RecursiveKeyOf<TObj extends object> = {
 export type TDefaultRow = Record<string | symbol, unknown>;
 
 export interface IColumnNode<T extends TDefaultRow = TDefaultRow> {
-  key: RecursiveKeyOf<T> | string | symbol,
+  key: RecursiveKeyOf<T> | string,
   label?: string,
   children?: IColumnNode<T>[],
 }
 
 export interface IColumn<T extends TDefaultRow = TDefaultRow> {
-  key: RecursiveKeyOf<T> | string | symbol,
+  key: RecursiveKeyOf<T> | string,
   label?: string,
   colspan: number,
   rowspan: number,

@@ -1,9 +1,10 @@
 .ui-input.input {
   font-family: var(--ui-font-family);
+  font-size: 1rem;
 
   & > span.input__label {
     display: block;
-    font-size: 12px;
+    font-size: 0.75em;
   }
   & > input.input__field {
     margin-top: 2px;
@@ -16,13 +17,14 @@
     border-radius: 6px;
 
     font-family: var(--ui-font-family);
+    font-size: 1em;
 
     box-shadow: 0 1px 3px #0002;
 
     &:not(:disabled) {
       &:focus, &:active {
         border-color: var(--ui-color-outline);
-        outline: 1px solid var(--ui-color-outline);
+        box-shadow: 0 1px 3px #0002, 0 0 0 1px var(--ui-color-outline);
       }
     }
   }
@@ -46,7 +48,7 @@
       border-color: red;
 
       &:focus, &:active {
-        outline: 1px solid red;
+        box-shadow: 0 1px 3px #0002, 0 0 0 1px red;
       }
     }
   }

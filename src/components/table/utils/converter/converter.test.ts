@@ -34,6 +34,7 @@ describe('convertColumnDefToArrays', () => {
     ];
     expect(convertColumnTreeToArrays(input)).toEqual(output);
   });
+
   it('Nested columns with not nested', () => {
     const input = [
       {

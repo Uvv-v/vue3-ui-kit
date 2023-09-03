@@ -1,0 +1,40 @@
+$shadow-regular: 0 1px 3px #0002;
+$shadow-active: 0 0 0 2px var(--ui-color-outline);
+
+button.ui-button {
+  position: relative;
+  padding: 0.5em 1em;
+  width: min-content;
+  height: min-content;
+
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  background: #eee;
+
+  font-family: var(--ui-font-family);
+  font-size: 1rem;
+  white-space: nowrap;
+  cursor: pointer;
+
+  box-shadow: $shadow-regular;
+
+  &:active, &:focus {
+    border-color: var(--ui-color-outline);
+    box-shadow: $shadow-regular, $shadow-active;
+  }
+
+  &.ui-button_flat {
+    border: none;
+    background: none;
+    box-shadow: none;
+
+    &:active, &:focus {
+      box-shadow: $shadow-active;
+    }
+  }
+
+  &.ui-button_dense {
+    font-size: 0.75rem;
+  }
+}

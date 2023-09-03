@@ -3,7 +3,7 @@ import { computed, Ref } from 'vue';
 
 export { default as UiCheckBox } from './UiCheckBox.vue';
 
-export const getCheckBoxGroupComputed = (checks: Ref<boolean>[]) => {
+export const getGroupCheckBoxComputed = (checks: Ref<boolean>[]) => {
   return computed({
     get: () => {
       return checks.some(({ value }) => value);
